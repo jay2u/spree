@@ -87,8 +87,8 @@ $(document).ready(function() {
 
   // toggle fields for specific events
   $('#promotion_event_name').change(function() {
-    $('#promotion_code_field').toggle($('#promotion_event_name').val() == 'spree.checkout.coupon_code_added');
-    $('#promotion_path_field').toggle($('#promotion_event_name').val() == 'spree.content.visited');
+    $('#promotion_code_field').toggle($('#promotion_event_name').val().indexOf('spree.checkout.coupon_code_added') != -1);
+    $('#promotion_path_field').toggle($('#promotion_event_name').val().indexOf('spree.content.visited') != -1);
   });
   $('#promotion_event_name').change();
 

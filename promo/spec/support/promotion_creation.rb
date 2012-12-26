@@ -7,7 +7,7 @@ module PromotionCreation
     click_link "New Promotion"
 
     fill_in "Name", :with => promotion_name
-    select2 event, :from => "Event Name"
+    select2_search event, :from => "Event Name"
     click_button "Create"
     page.should have_content("Editing Promotion")
 
@@ -34,7 +34,7 @@ module PromotionCreation
     promotion_name = "Order's total > $#{order_min}, Discount #{order_discount}"
     fill_in "Name", :with => promotion_name
     fill_in "Usage Limit", :with => "100"
-    select2 "Coupon code added", :from => "Event Name"
+    select2_search "Coupon code added", :from => "Event Name"
     fill_in "Code", :with => coupon_code
     click_button "Create"
     page.should have_content("Editing Promotion")

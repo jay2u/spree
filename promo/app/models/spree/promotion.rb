@@ -15,11 +15,14 @@ module Spree
     accepts_nested_attributes_for :promotion_actions
 
     validates_associated :rules
+    validates_presence_of :event_name_selection
 
-    attr_accessible :name, :event_name, :code, :match_policy,
+    attr_accessible :name, :event_name_selection, :code, :match_policy,
                     :path, :advertise, :description, :usage_limit,
                     :starts_at, :expires_at, :promotion_rules_attributes,
                     :promotion_actions_attributes
+
+    attr_accessor :event_name_selection
 
     # TODO: This shouldn't be necessary with :autosave option but nested attribute updating of actions is broken without it
     after_save :save_rules_and_actions
@@ -99,6 +102,14 @@ module Spree
 
     def code=(coupon_code)
       write_attribute(:code, (coupon_code.downcase.strip rescue nil))
+    end
+
+    def event_name_selection
+      event_name.split(" ") if event_name
+    end
+
+    def event_name_selection=(events)
+      self.event_name = events.join(" ")
     end
 
   end
