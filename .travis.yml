@@ -29,4 +29,4 @@ notifications:
     channels:
       - "irc.freenode.org#spree"
 rvm:
-  - 1.9.3-p327
+  - 1.9.3p327
